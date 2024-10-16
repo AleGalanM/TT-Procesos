@@ -17,5 +17,13 @@ steps:
 
 - script: |
     npm install
+    npm install -g firebase-tools
+  displayName: 'npm install'
+
+- script: |
     npm run build
-  displayName: 'npm install and build'
+  displayName: 'construimos el artefacto'
+
+- script: |
+    firebase depoy --token $(FIREBASE_TOKEN)
+  displayName: 'despliegue en firebase'
